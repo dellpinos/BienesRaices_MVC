@@ -1,0 +1,101 @@
+.derecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+        align-items: flex-end;
+    }
+
+    .dark-mode-boton {
+        width: 3rem;
+        margin: 3rem 0 2rem 0;
+        filter: invert(100%);
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @include tablet {
+            margin-top: 0;
+        }
+    }
+}
+.barra {
+    display: flex;
+    flex-direction: column; // aqui con el valor column-reverse puedo invertir el orden
+    align-items: center;
+    padding-top: 3rem;
+    
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+}
+
+.navegacion {
+
+    // display: none;
+    height: 0; // para evitar el espacio en blanco cuando no es visible la navegacion
+    visibility: hidden; //una propiedad que se puede animar
+    opacity: 0; // muy similar a visibility hidden
+    transition: visibility .3s ease-in-out, opacity .5s linear, height .5s linear;
+    // agrego el height a la animacion
+    @include tablet {
+        display: flex;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    a {
+        color: $blanco;
+        text-decoration: none;
+        font-size: 2.2rem;
+        display: block; // ocupe todo el espacio disponible
+        text-align: center; // centra el contenido
+        &:hover {
+            color: $verde;
+        }
+
+        @include tablet {
+            margin-right: 2rem;
+            font-size: 1.8rem;
+        
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+// Menu de hamburguesa
+
+.mobile-menu {
+    @include tablet {
+        display: none; // para que el vector no sea visible en pantallas grandes
+    }
+    img {
+        width: 5rem;
+
+    }
+}
+
+.mostrar {
+    height: auto; // para añadir la altura que elimine previamente
+    visibility: visible;
+    opacity: 1;
+}
+
+/** No se puede animar un display **/
+// .mostrar {
+//     display: flex;
+//     flex-direction: column;
+
+//     @include tablet {
+//         flex-direction: row; // esto soluciona el defecto de la direccion de la navegacion al extender la pantalla (despues de presionar el menu hamburguesa)
+//     }
+    
+// }

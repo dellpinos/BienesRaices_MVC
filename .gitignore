@@ -1,0 +1,15 @@
+#Archivos de Mac
+.DS_store
+
+#Imagenes src
+src/img
+
+#Imagenes build
+/public/build/img
+
+#Imagenes cargadas
+imagenes
+
+#Librerias NPM
+node_modules
+/vendor/
