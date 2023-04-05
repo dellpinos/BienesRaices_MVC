@@ -26,4 +26,8 @@ class Router {
             echo "#404 Pagina inexistente   :(";
         }
     }
+    // Muestra vista
+    public function render($view){
+        include __DIR__ . "/views/$view.php";
+    }
 }
