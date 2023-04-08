@@ -3,7 +3,7 @@
 //** Constantes */
 define('TEMPLATES_URL', __DIR__ . '/templates'); // definiendo una url
 define('FUNCIONES_URL', __DIR__ . 'funciones.php'); // misma carpeta
-define('CARPETA_IMAGENES', __DIR__ . '/../imagenes/');
+define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/'); // consulto la ruta a la superglobal SERVER
 
 //** Funciones */
 function incluirTemplate(string $nombre, bool $inicio = false)
@@ -24,11 +24,9 @@ function usuarioAutenticado(): void
 // dev
 function debuguear($parametro)
 {
-
     echo "<pre>";
     var_dump($parametro);
     echo "</pre>";
-
     exit;
 }
 
@@ -38,7 +36,6 @@ function s($html): string
     $s = htmlspecialchars($html);
     return $s;
 }
-
 // Validar tipo de contenido
 function validarTipoContenido($tipo)
 {
@@ -49,9 +46,7 @@ function validarTipoContenido($tipo)
 // Mostrar los mensajes
 function mostrarNotificacion($codigo)
 {
-
     $mensaje = '';
-
     switch ($codigo) {
         case 1:
             $mensaje = 'Creado correctamente';
@@ -67,4 +62,15 @@ function mostrarNotificacion($codigo)
             break;
     }
     return $mensaje;
+}
+
+function validarORedireccionar(string $url)
+{
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    // Validacion del id dentro de la url
+    if (!$id) {
+        header("Location: {$url}");
+    }
+    return $id;
 }
