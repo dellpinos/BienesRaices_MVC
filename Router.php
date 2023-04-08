@@ -38,7 +38,6 @@ class Router
     // Muestra vista
     public function render($view, $datos = [])
     {
-
         foreach ($datos as $key => $value) {
             $$key = $value;
         }

@@ -15,6 +15,7 @@ class PropiedadController
     {
         $propiedades = Propiedad::all();
         $resultado = $_GET['resultado'] ?? null; // Muestra mensaje condicional
+
         $router->render("propiedades/admin", [
             'propiedades' => $propiedades,
             'resultado' => $resultado

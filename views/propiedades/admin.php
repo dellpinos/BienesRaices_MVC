@@ -1,8 +1,4 @@
-<?php
 
-$propiedades;
-
-?>
 
 <main class="contenedor seccion">
     <h1>Menú Administrador</h1>
