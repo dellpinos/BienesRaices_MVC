@@ -32,14 +32,14 @@ class Vendedor extends ActiveRecord {
         if (!$this->apellido) {
             self::$errores[] = "El apellido es obligatorio";
         }
-        if (!$this->telefono) {
-            self::$errores[] = "El telefono es obligatorio";
-        }
         if (!$this->email) {
             self::$errores[] = "Tenes que poner un email";
         }
+        if (!$this->telefono) {
+            self::$errores[] = "El telefono es obligatorio";
+        }
         if(!preg_match('/[0-9]{8}/', $this->telefono)) { // caracteres del 0 al 9 y con una extension de 8
-            self::$errores[] = "Formato no valido";
+            self::$errores[] = "El telefono debe tener 8 digitos";
         }
 
         return self::$errores;

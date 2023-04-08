@@ -14,10 +14,12 @@ class PropiedadController
     public static function index(Router $router)
     {
         $propiedades = Propiedad::all();
+        $vendedores = Vendedor::all();
         $resultado = $_GET['resultado'] ?? null; // Muestra mensaje condicional
 
         $router->render("propiedades/admin", [
             'propiedades' => $propiedades,
+            'vendedores' => $vendedores,
             'resultado' => $resultado
         ]);
     }
@@ -62,11 +64,6 @@ class PropiedadController
                 //Guarda en la base de datos
                 $propiedad->guardar(); //almacena o no y devuelve un bool 
 
-                // Mensaje de exito y error
-                if ($resultado) {
-                    // Redireccionar al usuario
-                    header('location: /admin?resultado=1');
-                }
             }
         }
 
@@ -111,7 +108,7 @@ class PropiedadController
                     $image->save(CARPETA_IMAGENES . $nombreImagen);
                 }
                 /**  Insertar en la base de datos */
-                $resultado = $propiedad->guardar();
+                $propiedad->guardar();
             }
         };
 

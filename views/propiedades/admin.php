@@ -13,7 +13,7 @@
     
 
     <a href="/propiedades/crear" class="boton boton-verde">Nueva propiedad</a>
-    <a href="/admin/vendedores/crear.php" class="boton boton-amarillo">Nuevo vendedor</a>
+    <a href="/vendedores/crear" class="boton boton-amarillo">Nuevo vendedor</a>
 
     <h2>Propiedades</h2>
     <table class="propiedades">
@@ -46,6 +46,41 @@
                             <input type="submit" class="boton-rojo-block" value="Eliminar">
                         </form>
                         <a href="/propiedades/actualizar?id=<?php echo $propiedad->id ?>" class="boton-amarillo-block">Actualizar</a>
+                    </th>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <table class="propiedades">
+        <thead>
+            <tr> <!-- cabecera de la lista/ columnas de la DB -->
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <!-- Mostrar resultados de la DB -->
+
+        <tbody>
+            <?php foreach ($vendedores as $vendedor) :  ?>
+                <tr>
+
+                    <th><?php echo $vendedor->id; ?></th> <!-- Proceso e imprimo -->
+                    <th><?php echo $vendedor->nombre . " " . $vendedor->apellido; ?></th>
+                    <th><?php echo $vendedor->telefono; ?></th>
+                    <th><?php echo $vendedor->email; ?></th>
+                    <th>
+                        <form method="POST" class="w-100" action="/vendedores/eliminar">
+
+                            <input type="hidden" name="eliminarId" value="<?php echo $vendedor->id; ?>">
+                            <input type="hidden" name="tipo" value="vendedor">
+
+                            <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="/vendedores/actualizar?id=<?php echo $vendedor->id; ?>" class="boton-amarillo-block">Actualizar</a>
                     </th>
                 </tr>
             <?php endforeach; ?>
