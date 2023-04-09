@@ -17,7 +17,6 @@ class VendedorController
 
         // Ejecutar el código despues de que el usuario envie el formulario
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             // Nueva instancia
             $vendedor = new Vendedor($_POST['vendedor']);
             // Validaciones
@@ -43,22 +42,16 @@ class VendedorController
 
         // Ejecutar el código despues de que el usuario envie el formulario
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             // Asignar los valores
-
             $args = $_POST['vendedor'];
-
             //Sincronizar objeto en memoria
             $vendedor->sincronizar($args);
-
             // Validacion
             $errores = $vendedor->validaciones();
-
             // Sanitizar - Guardar
             if (empty($errores)) {
                 $vendedor->guardar();
                 // Mensaje de exito y error
-
             }
         }
         $router->render('vendedores/actualizar', [
@@ -66,7 +59,6 @@ class VendedorController
             'errores' => $errores
         ]);
     }
-
 
     public static function eliminar()
     {
@@ -76,13 +68,12 @@ class VendedorController
             $id = filter_var($id, FILTER_VALIDATE_INT); // valida que no sea manipulado
 
             if ($id) {
-                $tipo = $_POST['tipo'];
+                $tipo = $_POST['tipo']; // valida que exista el "tipo" (propiedad o vendedor) a eliminar
                 if (validarTipoContenido($tipo)) {
-                    $propiedad = Vendedor::find($id);
-                    $propiedad->eliminar();
+                    $vendedor = Vendedor::find($id);
+                    $vendedor->eliminar();
                 }
             }
         }
     }
 }
-
