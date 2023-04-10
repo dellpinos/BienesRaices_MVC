@@ -14,7 +14,7 @@ foreach ($entradas as $entrada) :
 
             <article class="entrada-blog">
                 <div class="imagen">
-                    <img src="/imagenes/<?php $entrada->imagen; ?>" alt="Imagen de la Entrada" loading="lazy">
+                    <img src="/imagenesBlog/<?php $entrada->imagen; ?>" alt="Imagen de la Entrada" loading="lazy">
                 </div>
                 <div class="texto-entrada">
                     <a href="/entrada?id=<?php echo $entrada->id; ?>">

@@ -1,3 +1,5 @@
+<h1>Administrar Entradas de Blog</h1>
+
 <?php
 foreach ($entradas as $entrada) :
     $username = '';
@@ -9,12 +11,13 @@ foreach ($entradas as $entrada) :
 ?>
 
         <main class="contenedor seccion contenido-centrado">
-            <h1>Administrar Entradas de Blog</h1>
+            
             <a href="/admin" class="boton boton-verde">Volver</a>
+            <a href="/entradas/crear" class="boton boton-verde">Crear</a>
 
             <article class="entrada-blog">
                 <div class="imagen">
-                    <img src="/imagenes/<?php $entrada->imagen; ?>" alt="Imagen de la Entrada" loading="lazy">
+                    <img src="/imagenesBLog/<?php $entrada->imagen; ?>" alt="Imagen de la Entrada" loading="lazy">
                 </div>
                 <div class="texto-entrada">
 
@@ -23,10 +26,11 @@ foreach ($entradas as $entrada) :
                     <p><?php echo $entrada->contenido; ?></p>
                     <div class="contenedor seccion">
                         <a class="boton boton-amarillo" href="/entradas/actualizar?id=<?php echo $entrada->id; ?>">Actualizar</a>
-                        <form method="POST" class="w-100" action="/vendedores/eliminar">
+                        <form method="POST" class="w-100" action="/entradas/eliminar">
 
                             <input type="hidden" name="eliminarId" value="<?php echo $entrada->id; ?>">
-                            <input type="hidden" name="tipo" value="vendedor">
+                            
+                            <input type="hidden" name="tipo" value="entrada"> <!-- esto era para diferenciar propiedad de vendedor-->
 
                             <input type="submit" class="boton-rojo-block" value="Eliminar">
                         </form>

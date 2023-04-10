@@ -57,12 +57,12 @@ class EntradaController
             if (empty($errores)) { // solo se ejecuta en caso de no haber errores
 
                 //Crear la carpeta para las imagenes
-                if (!is_dir(CARPETA_IMAGENES)) {
-                    mkdir(CARPETA_IMAGENES);
+                if (!is_dir(CARPETA_IMAGENES_BLOG)) {
+                    mkdir(CARPETA_IMAGENES_BLOG);
                 }
 
                 // Guarda la imagen en el servidor
-                $image->save(CARPETA_IMAGENES . $nombreImagen);
+                $image->save(CARPETA_IMAGENES_BLOG . $nombreImagen);
 
                 //Guarda en la base de datos
                 $entrada->guardar(); //almacena o no y devuelve un bool 
@@ -139,8 +139,8 @@ class EntradaController
             if ($id) {
                 $tipo = $_POST['tipo'];
                 if (validarTipoContenido($tipo)) {
-                    $propiedad = Propiedad::find($id);
-                    $propiedad->eliminar();
+                    $entrada = Entrada::find($id);
+                    $entrada->eliminar();
                 }
             }
         }

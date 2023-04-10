@@ -5,6 +5,16 @@ define('TEMPLATES_URL', __DIR__ . '/templates'); // definiendo una url
 define('FUNCIONES_URL', __DIR__ . 'funciones.php'); // misma carpeta
 define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/'); // consulto la ruta a la superglobal SERVER
 
+
+
+
+define('CARPETA_IMAGENES_BLOG', $_SERVER['DOCUMENT_ROOT'] . '/imagenesBLog/'); // consulto la ruta a la superglobal SERVER <<<
+
+
+
+
+
+
 //** Funciones */
 function incluirTemplate(string $nombre, bool $inicio = false)
 {

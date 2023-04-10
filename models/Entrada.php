@@ -20,9 +20,20 @@ class Entrada extends ActiveRecord {
         $this->id = $args['id'] ?? null;
         $this->titulo = $args['titulo'] ?? '';
         $this->contenido = $args['contenido'] ?? '';
-        $this->fecha = $args['fecha'] ?? '';
+        $this->fecha = $args['fecha'] ?? null;
         $this->imagen = $args['imagen'] ?? '';
-        $this->usuarios_id = $args['usuarios_id'] ?? '';
+        $this->usuarios_id = $args['usuarios_id'] ?? 2;   /// <<<< usuario id por default (modificar esto)
+    }
+    // Identificar y unir los atributos de la DB
+    public  function atributos()
+    { //itera
+        $atributos = [];
+        foreach (static::$columnasDB as $row) {
+            if ($row === 'id') continue;
+            if ($row === 'fecha') continue; /// <<<<<<<<<<< agregado
+            $atributos[$row] = $this->$row;
+        }
+        return $atributos;
     }
     public function validaciones()
     {
@@ -32,9 +43,6 @@ class Entrada extends ActiveRecord {
         }
         if (strlen($this->contenido) < 50 || strlen($this->contenido) > 600) { //evalua cantidad de caracteres
             self::$errores[] = "El contenido debe contener entre 50 y 600 caracteres.";
-        }
-        if (!$this->fecha) {
-            self::$errores[] = "Debes haber una fecha";
         }
         if (!$this->imagen) {
             self::$errores[] = "La imagen es obligatoria";
