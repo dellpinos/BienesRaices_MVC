@@ -5,12 +5,13 @@ namespace Controllers;
 use MVC\Router;
 use Model\Propiedad;
 use PHPMailer\PHPMailer\PHPMailer;
+use Model\Entrada;
+use Model\Usuario;
 
 class PaginasController
 {
     public static function index(Router $router)
     {
-
         $propiedades = Propiedad::get(3);
         $inicio = true;
         $router->render('paginas/index', [
@@ -38,12 +39,24 @@ class PaginasController
         ]);
     }
     public static function blog(Router $router)
-    {
-        $router->render('paginas/blog', []);
+    {   
+        $usuarios = Usuario::all();
+        $entradas = Entrada::all();
+        $router->render('paginas/blog', [
+            'entradas' => $entradas,
+            'usuarios' =>$usuarios
+        ]); 
     }
     public static function entrada(Router $router)
     {
-        $router->render('paginas/entrada', []); 
+        $id = validarORedireccionar('/blog');
+        $usuarios = Usuario::all();
+        $entrada = Entrada::find($id);
+        $router->render('paginas/entrada', [
+            'entrada' => $entrada,
+            'usuarios' => $usuarios
+        ]);
+        
     }
     public static function contacto(Router $router)
     {

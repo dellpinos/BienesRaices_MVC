@@ -6,10 +6,11 @@ use MVC\Router;
 use Controllers\PropiedadController;
 use Controllers\VendedorController;
 use Controllers\PaginasController;
+use Controllers\EntradaController;
 
 $router = new Router();
 /** Privadas */
-// Propiedades
+// CRUD Propiedades
 $router->get('/admin', [PropiedadController::class, 'index']);
 $router->get('/propiedades/crear', [PropiedadController::class, 'crear']);
 $router->post('/propiedades/crear', [PropiedadController::class, 'crear']);
@@ -23,6 +24,14 @@ $router->post('/vendedores/crear', [VendedorController::class, 'crear']);
 $router->get('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/eliminar', [VendedorController::class, 'eliminar']);
+
+// CRUD Entradas
+$router->get('/entradas/adminEntradas', [EntradaController::class, 'index']); // Crear el controller para todo esto
+$router->get('/entradas/crear', [EntradaController::class, 'crear']);
+$router->post('/entradas/crear', [EntradaController::class, 'crear']);
+$router->get('/entradas/actualizar', [EntradaController::class, 'actualizar']);
+$router->post('/entradas/actualizar', [EntradaController::class, 'actualizar']);
+$router->post('/entradas/eliminar', [EntradaController::class, 'eliminar']);
 
 /** Publicas */
 $router->get('/', [PaginasController::class, 'index']);

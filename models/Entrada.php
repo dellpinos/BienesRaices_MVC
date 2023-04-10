@@ -31,7 +31,7 @@ class Entrada extends ActiveRecord {
             self::$errores[] = "Debes añadir un titulo";
         }
         if (strlen($this->contenido) < 50 || strlen($this->contenido) > 600) { //evalua cantidad de caracteres
-            self::$errores[] = "La descripcion debe contener entre 50 y 600 caracteres.";
+            self::$errores[] = "El contenido debe contener entre 50 y 600 caracteres.";
         }
         if (!$this->fecha) {
             self::$errores[] = "Debes haber una fecha";
