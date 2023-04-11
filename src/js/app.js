@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     darkMode();
 
-    confirmarAccion();
+    /// confirmarAccion();
 
 
 });
@@ -44,20 +44,21 @@ function eventListeners() {
     mobileMenu.addEventListener('click', navegacionResponsive);
 
 }
-function confirmarAccion(){
+// function confirmarAccion(){  //  <<<< no funciona
 
-    const botonEliminar = document.querySelectorAll('.form-eliminar');
-    botonEliminar.forEach(boton => {
-        boton.addEventListener("click", function(e){
-            if(confirm("Estas seguro de eliminar este elemento?")){
-                e.submit();
-            } else {
-                alert('Accion cancelada.')
-            }
-        });
-    });
+//     const botonEliminar = document.querySelectorAll('.form-eliminar');
+
+//     botonEliminar.forEach(boton => {
+//         boton.addEventListener("click", function(e){
+//             if(confirm("Estas seguro de eliminar este elemento?")){
+//                 e.submit();   // <<<<< No funciona
+//             } else {
+//                 alert('Accion cancelada.');
+//             }
+//         });
+//     });
     
-}
+// }
 function navegacionResponsive() {
     const navegacion = document.querySelector('.navegacion');
 
