@@ -84,3 +84,4 @@ function validarORedireccionar(string $url)
     }
     return $id;
 }
+

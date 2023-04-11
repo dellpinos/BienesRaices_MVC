@@ -1,5 +1,5 @@
 <h1>Nuestro Blog</h1>
-
+<main class="contenedor ">
 <?php
 foreach ($entradas as $entrada) :
     $username = '';
@@ -7,14 +7,13 @@ foreach ($entradas as $entrada) :
         if ($entrada->usuarios_id === $usuario->id) {
             $username = $usuario->username;
         }
+    endforeach;
         $fecha = date("d/m/Y", strtotime($entrada->fecha)); // darle formato a la fecha
 ?>
 
-        <main class="contenedor seccion contenido-centrado">
-
             <article class="entrada-blog">
                 <div class="imagen">
-                    <img src="/imagenesBlog/<?php $entrada->imagen; ?>" alt="Imagen de la Entrada" loading="lazy">
+                <img src="/imagenes/<?php echo $entrada->imagen; ?>" alt="Imagen de la Entrada" loading="lazy">
                 </div>
                 <div class="texto-entrada">
                     <a href="/entrada?id=<?php echo $entrada->id; ?>">
@@ -22,11 +21,9 @@ foreach ($entradas as $entrada) :
                         <p class="informacion-meta">Escrito el: <span><?php echo $fecha; ?></span> por: <span><?php echo $username; ?></span> </p>
                         <p><?php echo $entrada->contenido; ?></p>
                     </a>
-
                 </div>
             </article> <!--entrada de blog-->
 
-        </main>
-
-        <?php endforeach; ?>
 <?php endforeach; ?>
+
+</main>

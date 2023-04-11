@@ -1,0 +1,9 @@
+.contenedor-botones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 0 3rem 3rem 3rem;
+}
+.admin-article {
+    margin: 7rem 0 0 0;
+}

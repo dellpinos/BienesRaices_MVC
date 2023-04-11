@@ -35,6 +35,7 @@ class Entrada extends ActiveRecord {
         }
         return $atributos;
     }
+
     public function validaciones()
     {
         // Validaciones

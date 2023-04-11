@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     darkMode();
 
-    
+    confirmarAccion();
+
 
 });
 
@@ -42,6 +43,20 @@ function eventListeners() {
 
     mobileMenu.addEventListener('click', navegacionResponsive);
 
+}
+function confirmarAccion(){
+
+    const botonEliminar = document.querySelectorAll('.form-eliminar');
+    botonEliminar.forEach(boton => {
+        boton.addEventListener("click", function(e){
+            if(confirm("Estas seguro de eliminar este elemento?")){
+                e.submit();
+            } else {
+                alert('Accion cancelada.')
+            }
+        });
+    });
+    
 }
 function navegacionResponsive() {
     const navegacion = document.querySelector('.navegacion');

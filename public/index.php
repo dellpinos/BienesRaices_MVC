@@ -26,7 +26,7 @@ $router->post('/vendedores/actualizar', [VendedorController::class, 'actualizar'
 $router->post('/vendedores/eliminar', [VendedorController::class, 'eliminar']);
 
 // CRUD Entradas
-$router->get('/entradas/adminEntradas', [EntradaController::class, 'index']); // Crear el controller para todo esto
+$router->get('/entradas/admin', [EntradaController::class, 'index']); // Crear el controller para todo esto
 $router->get('/entradas/crear', [EntradaController::class, 'crear']);
 $router->post('/entradas/crear', [EntradaController::class, 'crear']);
 $router->get('/entradas/actualizar', [EntradaController::class, 'actualizar']);

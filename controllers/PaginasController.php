@@ -13,10 +13,14 @@ class PaginasController
     public static function index(Router $router)
     {
         $propiedades = Propiedad::get(3);
+        $entradas = Entrada::get(2);
+        $usuarios = Usuario::all();
         $inicio = true;
         $router->render('paginas/index', [
             'propiedades' => $propiedades,
-            'inicio' => $inicio
+            'inicio' => $inicio,
+            'entradas' => $entradas,
+            'usuarios' =>$usuarios
         ]);
     }
     public static function nosotros(Router $router)

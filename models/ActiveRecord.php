@@ -72,7 +72,7 @@ class ActiveRecord
     }
 
     // Eliminar un registro
-    public function eliminar()   /// <<<<< revisar esto para entradas, modificar en el modelo hijo?
+    public function eliminar()   //// <<< Tiene override en Entrada
     {
         $query = "DELETE FROM " . static::$tabla . " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
         $query .= "LIMIT 1 ";
@@ -117,7 +117,7 @@ class ActiveRecord
         }
     }
     // Eliminar imagen del servidor
-    public function borrarImagen() /// <<<<< revisar esto para entradas, modificar en el modelo hijo?
+    public function borrarImagen() ///  <<< Tiene override en Entrada
     {
         //Comprobar si existe el archivo
         $existeArchivo = file_exists(CARPETA_IMAGENES . $this->imagen);  /// <<<<<<<< ver esto para las entradas

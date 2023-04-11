@@ -21,10 +21,10 @@ class EntradaController
         $entradas = Entrada::all();
         // $resultado = $_GET['resultado'] ?? null; // Muestra mensaje condicional
 
-        $router->render('entradas/adminEntradas', [
+        $router->render('entradas/admin', [
             'entradas' => $entradas,
-            'usuarios' =>$usuarios
-        ]); 
+            'usuarios' => $usuarios
+        ]);
     }
     public static function crear(Router $router)
     {
@@ -57,16 +57,13 @@ class EntradaController
             if (empty($errores)) { // solo se ejecuta en caso de no haber errores
 
                 //Crear la carpeta para las imagenes
-                if (!is_dir(CARPETA_IMAGENES_BLOG)) {
-                    mkdir(CARPETA_IMAGENES_BLOG);
+                if (!is_dir(CARPETA_IMAGENES)) {
+                    mkdir(CARPETA_IMAGENES);
                 }
-
                 // Guarda la imagen en el servidor
-                $image->save(CARPETA_IMAGENES_BLOG . $nombreImagen);
-
+                $image->save(CARPETA_IMAGENES . $nombreImagen);
                 //Guarda en la base de datos
                 $entrada->guardar(); //almacena o no y devuelve un bool 
-
             }
         }
 
@@ -82,7 +79,7 @@ class EntradaController
 
     public static function actualizar(Router $router)
     {
-        $id = validarORedireccionar('/adminEntradas');
+        $id = validarORedireccionar('/admin');
         $entrada = Entrada::find($id);
         // Validar datos
         $errores = $entrada->validaciones();
@@ -132,16 +129,15 @@ class EntradaController
     public static function eliminar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
             // Validar id
             $id = $_POST['eliminarId'];
             $id = filter_var($id, FILTER_VALIDATE_INT); // valida que no sea manipulado
 
             if ($id) {
-                $tipo = $_POST['tipo'];
-                if (validarTipoContenido($tipo)) {
-                    $entrada = Entrada::find($id);
-                    $entrada->eliminar();
-                }
+                $entrada = Entrada::find($id);
+                $entrada->eliminar();
+                header('Location: /entradas/admin');
             }
         }
     }

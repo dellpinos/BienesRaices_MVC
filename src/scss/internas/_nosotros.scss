@@ -1,8 +1,11 @@
 .contenido-nosotros {
 
+
     @include tablet {
         @include grid(2, 2rem);
+        align-items: center;
     }
+    
 }
 
 .texto-nosotros blockquote {

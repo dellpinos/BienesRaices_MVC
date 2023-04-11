@@ -47,7 +47,6 @@ if (!isset($inicio)) {
                 </div>
             </div> <!-- cierre de la barra-->
             <?php echo $inicio ? '<h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>' : ''; ?>
-
         </div>
     </header>
 
@@ -66,14 +65,9 @@ if (!isset($inicio)) {
                 <a href="/contacto">Contacto</a>
             </nav>
         </div>
-
-
-        <p class="copyright">Todos los derechos Reservados <?php $fecha = date('Y');
-                                                            echo $fecha;
-                                                            ?> &copy; </p>
+        <p class="copyright">Todos los derechos Reservados <?php $fecha = date('Y'); echo $fecha;?> &copy; </p>
 
     </footer>
     <script src="../build/js/bundle.min.js"></script>
 </body>
-
 </html>
