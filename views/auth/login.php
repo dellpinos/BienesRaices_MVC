@@ -14,10 +14,10 @@
             <legend>Email y Password</legend>
 
             <label for="email">E-mail</label>
-            <input type="email" placeholder="Ingresa tu e-mail" id="email" name="email" required>
+            <input type="email" placeholder="Ingresa tu e-mail" id="email" name="email" > <!-- agregar Required -->
 
             <label for="password">Password</label>
-            <input type="password" placeholder="Ingresa tu Password" id="Password" name="password" required>
+            <input type="password" placeholder="Ingresa tu Password" id="Password" name="password" > <!-- agregar Required -->
 
         </fieldset>
 

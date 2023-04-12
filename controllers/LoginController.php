@@ -16,19 +16,20 @@ class LoginController {
             if(empty($errores)){
                 // Verificar si el usuario existe
                 $resultado = $auth->existeUsuario(); // Este método consulta sobre la instancia que acaba de ser creada
-
                 if(!$resultado){
                     $errores = Usuario::getErrores();
                 } else {
-                    
+                    // Verificar el password
+
+                    $autenticado = $auth->comprobarPassword($resultado);
+                    if($autenticado){
+                        // Autenticar al usuario
+
+                    } else {
+                        // password incorrecto
+                        $errores = Usuario::getErrores(); // consultar u obtener los errores
+                    }
                 }
-
-                // Verificar el password
-
-
-
-                // Autenticar al usuario
-
 
             }
 

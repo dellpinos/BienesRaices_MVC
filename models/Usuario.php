@@ -36,12 +36,20 @@ class Usuario extends ActiveRecord {
         $query = "SELECT * FROM " . self::$tabla . " WHERE email = '" . $this->email . "' LIMIT 1";
         $resultado = self::$db->query($query);
 
-        if(!$resultado){
-            self::$errores[] = 'El usuario no existe';
+        if(!$resultado->num_rows){
+            self::$errores[] = 'El usuario no existe'; // <<<< no funciona
             return;
         }
         return $resultado;
+    }
+    public function comprobarPassword($resultado){
+        $usuario = $resultado->fetch_object();
 
-        debuguear($resultado);
+        $autenticado = password_verify($this->password, $usuario->password);
+        
+        if(!$autenticado){
+            self::$errores[] = 'El password es incorrecto';
+        }
+        return $autenticado;
     }
 }
