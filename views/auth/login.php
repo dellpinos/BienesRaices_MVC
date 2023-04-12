@@ -9,7 +9,7 @@
 
     <?php endforeach ?>
 
-    <form class="formulario" method="POST"> <!-- Si no incluyo un action envia los datos a este mismo archivo -->
+    <form class="formulario" method="POST" action="/login"> <!-- Si no incluyo un action envia los datos a este mismo archivo -->
         <fieldset>
             <legend>Email y Password</legend>
 

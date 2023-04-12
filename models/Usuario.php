@@ -4,42 +4,44 @@ namespace Model;
 
 class Usuario extends ActiveRecord {
 
-    protected static $columnasDB = ['id', 'email', 'username']; // este array me permite mapear y unir todos los atributos del POST en un array iterable
-    //  'password',
     protected static $tabla = 'usuarios';
+    protected static $columnasDB = ['id', 'email', 'password', 'username']; 
+    
 
     public $id;
     public $email;
-    // public $password;
+    public $password;
     public $username;
 
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
         $this->email = $args['email'] ?? '';
-        // $this->password = $args['password'] ?? '';
+        $this->password = $args['password'] ?? '';
         $this->username = $args['username'] ?? '';
 
     }
     public function validaciones()
     {
-        // // Validaciones
-        // if (!$this->titulo) {
-        //     self::$errores[] = "Debes añadir un titulo";
-        // }
-        // if (strlen($this->contenido) < 50 || strlen($this->contenido) > 600) { //evalua cantidad de caracteres
-        //     self::$errores[] = "La descripcion debe contener entre 50 y 600 caracteres.";
-        // }
-        // if (!$this->fecha) {
-        //     self::$errores[] = "Debes haber una fecha";
-        // }
-        // if (!$this->imagen) {
-        //     self::$errores[] = "La imagen es obligatoria";
-        // }
-        // if (!$this->usuarios_id) {
-        //     self::$errores[] = "Elige un usuario";
-        // }
-
+        if(!$this->email){
+            self::$errores[] = 'Debes ingresar tu email';
+        }
+        if(!$this->password){
+            self::$errores[] = 'El password es obligatorio';
+        }
         return self::$errores;
+    }
+    public function existeUsuario(){
+        // Revisar si un usuario existe o no
+        $query = "SELECT * FROM " . self::$tabla . " WHERE email = '" . $this->email . "' LIMIT 1";
+        $resultado = self::$db->query($query);
+
+        if(!$resultado){
+            self::$errores[] = 'El usuario no existe';
+            return;
+        }
+        return $resultado;
+
+        debuguear($resultado);
     }
 }
