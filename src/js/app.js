@@ -43,7 +43,44 @@ function eventListeners() {
 
     mobileMenu.addEventListener('click', navegacionResponsive);
 
+    // Muestra campos condicionales
+    const metodoContacto = document.querySelectorAll('input[name="contacto[contacto]"]');
+
+    metodoContacto.forEach(input => input.addEventListener('click', mostrarMetodosContacto));
+
+
 }
+
+function mostrarMetodosContacto(e){
+    const contactoDiv = document.querySelector('#contacto');
+
+    if(e.target.value === 'telefono'){
+        contactoDiv.innerHTML = `
+        <label for="telefono"></label>
+                <input type="tel" placeholder="Ingresa tu Teléfono" id="telefono" name="contacto[telefono]">
+                <p>Elija la fecha y la hora para ser contactado</p>
+
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" name="contacto[fecha]">
+
+                <label for="hora">Hora</label>
+                <input type="time" id="hora" min="09:00" max="21:00" name="contacto[hora]">
+        `;
+    } else {
+        contactoDiv.innerHTML = `
+        <label for="email">E-mail</label>
+        <input type="email" placeholder="Ingresa tu e-mail" id="email" name="contacto[email]" > 
+        `;
+    }
+
+}
+
+function navegacionResponsive() {
+    const navegacion = document.querySelector('.navegacion');
+
+    navegacion.classList.toggle('mostrar');
+}
+
 // function confirmarAccion(){  //  <<<< no funciona
 
 //     const botonEliminar = document.querySelectorAll('.form-eliminar');
@@ -59,12 +96,6 @@ function eventListeners() {
 //     });
     
 // }
-function navegacionResponsive() {
-    const navegacion = document.querySelector('.navegacion');
-
-    navegacion.classList.toggle('mostrar');
-}
-
 
 /** AGREGANDO COSAS */
 
