@@ -1,5 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
+
     session_start();
 }
 $auth = $_SESSION['login'] ?? false;
@@ -41,7 +42,7 @@ if (!isset($inicio)) {
                         <a href="/blog">Blog</a>
                         <a href="/contacto">Contacto</a>
                         <?php if ($auth) : ?>
-                            <a href="/cerrar-sesion">Cerrar Sesión</a>
+                            <a href="/logout">Cerrar Sesión</a>
                         <?php endif; ?>
                     </nav>
                 </div>
@@ -65,9 +66,11 @@ if (!isset($inicio)) {
                 <a href="/contacto">Contacto</a>
             </nav>
         </div>
-        <p class="copyright">Todos los derechos Reservados <?php $fecha = date('Y'); echo $fecha;?> &copy; </p>
+        <p class="copyright">Todos los derechos Reservados <?php $fecha = date('Y');
+                                                            echo $fecha; ?> &copy; </p>
 
     </footer>
     <script src="../build/js/bundle.min.js"></script>
 </body>
+
 </html>

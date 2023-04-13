@@ -68,6 +68,8 @@ class PaginasController
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             $respuestas = $_POST['contacto'];
+
+
             // Crear instancia de PHP Mailer
             $mail = new PHPMailer();
 
@@ -89,11 +91,10 @@ class PaginasController
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
 
-
             // Definir el contenido
             $contenido = '<html>';
             $contenido .= '<p>Tienes un nuevo mensaje</p>';
-            $contenido .= '<p>Nombre: ' . $respuestas['nombre'] . ' </p> <br>';
+            $contenido .= '<p>Nombre: ' . $respuestas['nombre'] . ' </p> <br>'; //<<<<< Si envio el formulario vacio tengo los undefined
             
 
             // Enviar de forma condicional

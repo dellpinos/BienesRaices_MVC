@@ -24,7 +24,8 @@ class LoginController {
                     $autenticado = $auth->comprobarPassword($resultado);
                     if($autenticado){
                         // Autenticar al usuario
-
+                        $auth->autenticar();
+                        
                     } else {
                         // password incorrecto
                         $errores = Usuario::getErrores(); // consultar u obtener los errores
@@ -32,7 +33,6 @@ class LoginController {
                 }
 
             }
-
         }
         $router->render('auth/login', [
             'errores' => $errores
@@ -40,6 +40,8 @@ class LoginController {
         ]);
     }
     public static function logout(){
-        echo "desde el controlador2";
+        session_start();
+        $_SESSION = [];
+        header('Location: /');
     }
 }

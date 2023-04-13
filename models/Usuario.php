@@ -46,10 +46,23 @@ class Usuario extends ActiveRecord {
         $usuario = $resultado->fetch_object();
 
         $autenticado = password_verify($this->password, $usuario->password);
-        
+
         if(!$autenticado){
             self::$errores[] = 'El password es incorrecto';
         }
+        $this->username = $usuario->username; // <<<<<<< Asigno el contenido de username (en la DB) al objeto en memoria
         return $autenticado;
+    }
+    public function autenticar(){
+
+
+        session_start();
+
+        // Llenar el array de sesion
+        $_SESSION['usuario'] = $this->email;
+        $_SESSION['username'] = $this->username;
+        $_SESSION['login'] = true;
+        header('Location: /admin');
+
     }
 }

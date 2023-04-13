@@ -24,6 +24,7 @@ function incluirTemplate(string $nombre, bool $inicio = false)
 // Inicio sesion
 function usuarioAutenticado(): void
 {
+
     session_start();
 
     if (!$_SESSION['login']) {
@@ -84,4 +85,3 @@ function validarORedireccionar(string $url)
     }
     return $id;
 }
-
