@@ -44,4 +44,6 @@ class LoginController {
         $_SESSION = [];
         header('Location: /');
     }
+
+
 }

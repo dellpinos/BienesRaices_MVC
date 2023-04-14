@@ -20,7 +20,7 @@ class PaginasController
             'propiedades' => $propiedades,
             'inicio' => $inicio,
             'entradas' => $entradas,
-            'usuarios' =>$usuarios
+            'usuarios' => $usuarios
         ]);
     }
     public static function nosotros(Router $router)
@@ -43,13 +43,13 @@ class PaginasController
         ]);
     }
     public static function blog(Router $router)
-    {   
+    {
         $usuarios = Usuario::all();
         $entradas = Entrada::all();
         $router->render('paginas/blog', [
             'entradas' => $entradas,
-            'usuarios' =>$usuarios
-        ]); 
+            'usuarios' => $usuarios
+        ]);
     }
     public static function entrada(Router $router)
     {
@@ -60,15 +60,13 @@ class PaginasController
             'entrada' => $entrada,
             'usuarios' => $usuarios
         ]);
-        
     }
     public static function contacto(Router $router)
     {
         $mensaje = null;
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $respuestas = $_POST['contacto'];
-
 
             // Crear instancia de PHP Mailer
             $mail = new PHPMailer();
@@ -95,10 +93,10 @@ class PaginasController
             $contenido = '<html>';
             $contenido .= '<p>Tienes un nuevo mensaje</p>';
             $contenido .= '<p>Nombre: ' . $respuestas['nombre'] . ' </p> <br>'; //<<<<< Si envio el formulario vacio tengo los undefined
-            
+
 
             // Enviar de forma condicional
-            if($respuestas['contacto'] === 'telefono'){
+            if ($respuestas['contacto'] === 'telefono') {
                 $contenido .= '<p>Eligio ser contactado por telefono: ' . $respuestas['telefono'] . '</p>';
                 $contenido .= '<p>Fecha de y hora contacto: ' . $respuestas['fecha'] . ' a las ' . $respuestas['hora'] . ' </p>';
             } else {
@@ -115,14 +113,12 @@ class PaginasController
             $mail->AltBody = 'Esto es texto plano sin html';
 
             // Enviar el email
-            if($mail->send()){
+            if ($mail->send()) {
                 $mensaje =  "Mensaje enviado correctamente";
             } else {
                 $mensaje =  "El mensaje no fue enviado";
             }
-
         }
-
         $router->render('paginas/contacto', [
             'mensaje' => $mensaje
         ]);

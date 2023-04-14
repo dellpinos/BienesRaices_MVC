@@ -16,7 +16,7 @@ endforeach;
     <img src="/imagenes/<?php echo $entrada->imagen; ?>" alt="Imagen de la Entrada" loading="lazy">
 
 
-    <p class="informacion-meta">Escrito el: <span><?php echo $fecha; ?></span> por: <span><?php echo $username; ?></span> </p>
+    <p class="informacion-meta">Escrito el: <span><?php echo $fecha; ?></span>  Editado por: <span><?php echo $username; ?></span> </p>
     <div class="resumen-propiedad">
 
         <p>

@@ -51,14 +51,16 @@ class Usuario extends ActiveRecord {
             self::$errores[] = 'El password es incorrecto';
         }
         $this->username = $usuario->username; // <<<<<<< Asigno el contenido de username (en la DB) al objeto en memoria
+
+        $this->id = $usuario->id; // <<<<<<<<<< VER ESTO
+
         return $autenticado;
     }
     public function autenticar(){
-
-
         session_start();
 
         // Llenar el array de sesion
+        $_SESSION['usuario_id'] = $this->id; // <<<<<
         $_SESSION['usuario'] = $this->email;
         $_SESSION['username'] = $this->username;
         $_SESSION['login'] = true;

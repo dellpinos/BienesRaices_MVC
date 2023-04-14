@@ -18,23 +18,23 @@
         <fieldset>
             <legend>Información Personal</legend>
             <label for="nombre">Nombre</label>
-            <input type="text" placeholder="Ingresa tu nombre" id="nombre" name="contacto[nombre]">
+            <input type="text" placeholder="Ingresa tu nombre" id="nombre" name="contacto[nombre]" required>
 
             <label for="nombre">Mensaje</label>
-            <textarea id="mensaje" placeholder="Escriba su mensaje" name="contacto[mensaje]"></textarea>
+            <textarea id="mensaje" placeholder="Escriba su mensaje" name="contacto[mensaje]" required></textarea>
         </fieldset>
         <fieldset>
             <legend>Información sobre la Propiedad</legend>
 
             <label for="opciones">Vende o Compra</label>
-            <select id="opciones" name="contacto[opciones]">
+            <select id="opciones" name="contacto[opciones]" required>
                 <option value="" disabled selected>--Seleccione--</option>
                 <option value="Compra">Compra</option>
                 <option value="Vende">Vende</option>
             </select>
 
             <label for="presupuesto">Precio o Presupuesto</label>
-            <input type="number" placeholder="Tu Precio o Presupuesto" id="presupuesto" name="contacto[presupuesto]">
+            <input type="number" placeholder="Tu Precio o Presupuesto" id="presupuesto" name="contacto[presupuesto]" required>
 
         </fieldset>
         <fieldset>

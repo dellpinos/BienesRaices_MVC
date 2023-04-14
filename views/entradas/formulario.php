@@ -10,6 +10,8 @@
             <label for="imagen">Imagen:</label>
             <input type="file" id="imagen" accept="image/jpeg, image/png" name="entrada[imagen]">
 
+            <input type="hidden" name="entrada[usuarios_id]" value="<?php echo $id; ?>">
+
             <?php if($entrada->imagen) :  ?>
                 <img src="/imagenes/<?php echo $entrada->imagen; ?>" class="imagen-pequeña" >
 

@@ -22,7 +22,7 @@ class Entrada extends ActiveRecord {
         $this->contenido = $args['contenido'] ?? '';
         $this->fecha = $args['fecha'] ?? null;
         $this->imagen = $args['imagen'] ?? '';
-        $this->usuarios_id = $args['usuarios_id'] ?? 2;   /// <<<< usuario id por default (modificar esto)
+        $this->usuarios_id = $args['usuarios_id'] ?? '';   /// <<<< usuario id por default (modificar esto)
     }
     // Identificar y unir los atributos de la DB
     public  function atributos()

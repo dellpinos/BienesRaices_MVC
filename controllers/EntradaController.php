@@ -3,14 +3,9 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Propiedad;
-use Model\Vendedor;
 use Model\Entrada;
 use Model\Usuario;
 use Intervention\Image\ImageManagerStatic as Image;
-
-
-
 
 
 class EntradaController
@@ -74,9 +69,6 @@ class EntradaController
         ]);
     }
 
-
-
-
     public static function actualizar(Router $router)
     {
         $id = validarORedireccionar('/admin');
@@ -122,9 +114,6 @@ class EntradaController
             'usuarios' => $usuarios
         ]);
     }
-
-
-
 
     public static function eliminar()
     {

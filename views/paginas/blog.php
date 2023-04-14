@@ -18,7 +18,7 @@ foreach ($entradas as $entrada) :
                 <div class="texto-entrada">
                     <a href="/entrada?id=<?php echo $entrada->id; ?>">
                         <h4><?php echo $entrada->titulo; ?></h4>
-                        <p class="informacion-meta">Escrito el: <span><?php echo $fecha; ?></span> por: <span><?php echo $username; ?></span> </p>
+                        <p class="informacion-meta">Escrito el: <span><?php echo $fecha; ?></span>  Editado por: <span><?php echo $username; ?></span> </p>
                         <p><?php echo $entrada->contenido; ?></p>
                     </a>
                 </div>

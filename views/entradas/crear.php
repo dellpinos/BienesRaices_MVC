@@ -6,7 +6,11 @@
         </div>
 
     <?php endforeach; ?>
+    
 
+    <?php 
+    $id = $_SESSION['usuario_id'];
+    ?>
     <a href="/entradas/admin" class="boton boton-verde">Volver</a>
     
     <form class="formulario" method="POST" enctype="multipart/form-data">
